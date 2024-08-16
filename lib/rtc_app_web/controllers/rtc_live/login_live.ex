@@ -8,7 +8,7 @@ defmodule RtcAppWeb.RtcLive.LoginLive do
   def render(assigns) do
     ~H"""
       <h1>Login!</h1>
-      <.form phx-submit ="login">
+      <.form phx-submit ="login" action = {~p"/user"}>
         <label>Username</label><br>
         <input type = "text" name = "username"><br>
         <label>Password</label><br>
