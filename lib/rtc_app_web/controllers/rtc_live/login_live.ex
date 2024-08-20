@@ -1,5 +1,4 @@
 defmodule RtcAppWeb.RtcLive.LoginLive do
-  alias RtcAppWeb.RtcLive
   use RtcAppWeb, :live_view
 
   alias RtcApp.Repo
@@ -8,7 +7,7 @@ defmodule RtcAppWeb.RtcLive.LoginLive do
   def render(assigns) do
     ~H"""
       <h1>Login!</h1>
-      <.form phx-submit ="login" action = {~p"/"}>
+      <.form phx-submit ="login", action = {~p"/users"}, phx-trigger-action={@trigger_submit}>
         <label>Username</label><br>
         <input type = "text" name = "username"><br>
         <label>Password</label><br>
@@ -38,7 +37,7 @@ defmodule RtcAppWeb.RtcLive.LoginLive do
         IO.inspect(username)
         if password == password do
           {:noreply, socket
-            |>assign(message: "Successful login")
+            |>assign(message: "Successful login", trigger_submit: true)
             |>redirect(to: ~p"/")
         }
         else

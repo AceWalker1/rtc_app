@@ -23,6 +23,8 @@ defmodule RtcAppWeb.Router do
     live "/signup", RtcLive.SignUpLive
     live "/login", RtcLive.LoginLive
     live "/user/:id", RtcLive.UserLive
+
+    post "/users", UserController, :login
   end
 
   # Other scopes may use custom stacks.
